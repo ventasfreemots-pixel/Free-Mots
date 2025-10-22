@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free-Mots</title>
+  <meta name="description" content="Free-Mots: Remoción ecológica de heno motita mediante poda y solución de bicarbonato." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%236b21a8'/><text x='50' y='60' font-size='50' text-anchor='middle' fill='white'>FM</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>.card{border:1px solid rgba(107,33,168,.15);box-shadow:0 8px 18px rgba(16,24,40,.08)}</style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-purple-100 to-green-100 text-gray-800">
+  <header class="flex items-center justify-between p-6 bg-white shadow-md sticky top-0 z-10">
+    <div class="flex items-center gap-3">
+      <div id="logoBox" class="w-20 h-20 p-2 rounded-xl bg-purple-100 ring-1 ring-purple-300 overflow-hidden flex items-center justify-center">
+        <span id="logoFallback" class="text-2xl font-bold text-purple-700">FM</span>
+        <img id="logoImg" alt="Free-Mots Logo" class="hidden w-full h-full object-contain" />
+      </div>
+      <h1 class="text-3xl font-bold text-purple-700">Free-Mots</h1>
+    </div>
+    <nav class="space-x-6 text-sm font-semibold">
+      <a href="#inicio" class="hover:text-green-600">Inicio</a>
+      <a href="#heno" class="hover:text-green-600">¿Qué es el Heno Motita?</a>
+      <a href="#servicios" class="hover:text-green-600">Servicios</a>
+      <a href="#contacto" class="hover:text-green-600">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="px-6 pt-4">
+    <div class="max-w-5xl mx-auto bg-white card rounded-xl p-4 text-sm text-gray-700">
+      <p class="mb-3">Para ver imágenes en esta vista previa, cárgalas aquí (no se suben a ningún servidor).</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-xl p-4 card">
+          <h4 class="font-semibold text-purple-700 mb-2">Logo</h4>
+          <div class="flex flex-wrap items-center gap-3">
+            <label class="inline-flex items-center gap-2 text-sm cursor-pointer bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-lg">
+              Subir logo (PNG/JPG)
+              <input id="logoFile" type="file" accept="image/png,image/jpeg,image/gif" class="hidden" />
+            </label>
+            <div class="flex items-center gap-2">
+              <input id="logoUrlInput" placeholder="Pega URL (https:// o data:image...)" class="border rounded-lg px-3 py-2 text-sm w-64" />
+              <button id="logoUrlBtn" class="text-sm bg-purple-100 hover:bg-purple-200 text-purple-700 px-3 py-2 rounded-lg">Usar URL</button>
+            </div>
+            <label class="flex items-center gap-2 text-sm ml-auto select-none">
+              <input id="logoBgToggle" type="checkbox" checked />
+              Fondo detrás del logo
+            </label>
+          </div>
+          <p id="logoError" class="text-red-600 text-xs mt-2 hidden"></p>
+          <div class="mt-3 w-40 h-40 rounded-xl flex items-center justify-center overflow-hidden border border-purple-100">
+            <img id="logoPreview" alt="logo preview" class="object-contain w-full h-full hidden" />
+            <span id="logoDropMsg" class="text-purple-400 text-xs text-center px-2">Arrastra aquí tu archivo o usa el botón/URL</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 card">
+          <h4 class="font-semibold text-green-700 mb-2">Fotos: ¿Qué es el heno motita? (hasta 4)</h4>
+          <label class="inline-flex items-center gap-2 text-sm cursor-pointer bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg">
+            Subir hasta 4 fotos
+            <input id="henoFiles" type="file" accept="image/*" multiple class="hidden" />
+          </label>
+          <div class="grid grid-cols-2 gap-3 mt-3" id="henoGrid">
+            <div class="rounded-xl bg-purple-50 w-full h-28 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-xs">Vacío</span></div>
+            <div class="rounded-xl bg-purple-50 w-full h-28 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-xs">Vacío</span></div>
+            <div class="rounded-xl bg-purple-50 w-full h-28 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-xs">Vacío</span></div>
+            <div class="rounded-xl bg-purple-50 w-full h-28 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-xs">Vacío</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inicio" class="text-center py-10 px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-purple-700 mb-4">Conserva la salud de tus árboles con Free-Mots</h2>
+    <p class="max-w-2xl mx-auto text-lg text-gray-600">
+      Somos especialistas en la remoción ecológica de <strong>heno motita</strong>, cuidando la vida de tus árboles mediante poda profesional y aplicación natural de bicarbonato.
+    </p>
+  </section>
+
+  <section id="heno" class="bg-white py-12 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-3xl font-bold text-green-700 mb-6">¿Qué es el Heno Motita?</h3>
+      <p class="text-gray-700 mb-4">El <strong>heno motita</strong> (Tillandsia recurvata) es una planta epífita que crece sobre los árboles, alimentándose del aire y la humedad ambiental. Aunque no es parásita, puede volverse invasiva y afectar la fotosíntesis de sus huéspedes.</p>
+      <p class="text-gray-700 mb-4">Cuando la infestación es severa, el heno motita bloquea la luz solar y limita la oxigenación, provocando debilitamiento y, eventualmente, la muerte de ramas o del árbol completo.</p>
+      <div class="grid md:grid-cols-2 gap-4 mt-8" id="henoViewGrid">
+        <div class="rounded-2xl shadow-md bg-purple-50 w-full h-64 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-sm">Foto 1</span></div>
+        <div class="rounded-2xl shadow-md bg-purple-50 w-full h-64 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-sm">Foto 2</span></div>
+        <div class="rounded-2xl shadow-md bg-purple-50 w-full h-64 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-sm">Foto 3</span></div>
+        <div class="rounded-2xl shadow-md bg-purple-50 w-full h-64 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-sm">Foto 4</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="py-16 px-6 bg-gradient-to-b from-green-50 to-purple-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-3xl font-bold text-purple-700 mb-6">Nuestro Servicio</h3>
+      <p class="text-gray-700 mb-8">En Free-Mots ofrecemos un servicio integral de <strong>remoción de heno motita</strong>. Nuestro proceso incluye:</p>
+      <ul class="text-left list-disc list-inside max-w-2xl mx-auto text-gray-700 space-y-2 mb-8">
+        <li>Poda profesional para eliminar material afectado.</li>
+        <li>Revisión de las ramas para prevenir rebrote.</li>
+        <li>Aplicación natural de una solución de bicarbonato que ayuda a mantener el equilibrio ecológico del árbol.</li>
+      </ul>
+
+      <div class="bg-white rounded-xl p-4 card mb-6">
+        <h4 class="font-semibold text-purple-700 mb-2">Imágenes del servicio (hasta 2)</h4>
+        <label class="inline-flex items-center gap-2 text-sm cursor-pointer bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-lg">
+          Subir hasta 2 fotos
+          <input id="servicioFiles" type="file" accept="image/*" multiple class="hidden" />
+        </label>
+        <div class="grid md:grid-cols-2 gap-4 mt-4" id="servicioGrid">
+          <div class="rounded-2xl shadow-md bg-purple-50 w-full h-64 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-sm">Servicio 1</span></div>
+          <div class="rounded-2xl shadow-md bg-purple-50 w-full h-64 flex items-center justify-center overflow-hidden"><img class="hidden w-full h-full object-cover" /><span class="text-purple-400 text-sm">Servicio 2</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="bg-white py-16 px-6 text-center">
+    <h3 class="text-3xl font-bold text-green-700 mb-6">Contáctanos</h3>
+    <p class="text-gray-700 mb-4">¿Tienes árboles afectados por heno motita? Permítenos ayudarte a restaurar su salud.</p>
+    <div class="flex flex-col items-center justify-center gap-4 mb-4">
+      <div class="flex items-center gap-3">
+        <span class="text-sm text-gray-600">WhatsApp:</span>
+        <input id="waInput" value="525572217853" class="border rounded-full px-3 py-2 text-sm w-56" />
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-sm text-gray-600">Correo:</span>
+        <input id="mailInput" value="ventasfreemots@gmail.com" class="border rounded-full px-3 py-2 text-sm w-56" />
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+      <a id="waBtn" href="https://wa.me/525572217853" target="_blank" rel="noopener noreferrer" class="bg-green-600 hover:bg-green-700 text-white text-lg px-6 py-3 rounded-full">Contactar por WhatsApp</a>
+      <a id="mailBtn" href="mailto:ventasfreemots@gmail.com" class="bg-purple-600 hover:bg-purple-700 text-white text-lg px-6 py-3 rounded-full">Contactar por Email</a>
+    </div>
+  </section>
+
+  <div class="fixed bottom-6 right-6 flex flex-col gap-3">
+    <a id="waFloat" href="https://wa.me/525572217853" target="_blank" rel="noopener noreferrer" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg">
+      <span class="sr-only">WhatsApp</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.92 11.92 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.12 1.6 5.92L0 24l6.24-1.63A12 12 0 1020.52 3.48zM12 21.82a9.82 9.82 0 110-19.64 9.82 9.82 0 010 19.64z"/><path d="M17.2 14.5c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.62.14-.18.27-.71.88-.87 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.56-1.48-1.82-.16-.27-.02-.42.12-.56.13-.13.27-.34.41-.5.14-.18.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.85-2.04-.22-.52-.44-.45-.62-.46h-.53c-.18 0-.48.07-.73.34-.25.27-.96.95-.96 2.31 0 1.36.98 2.67 1.12 2.85.14.18 1.93 2.94 4.7 4.12.66.29 1.18.46 1.58.59.66.21 1.25.18 1.72.11.52-.07 1.6-.66 1.83-1.3.23-.64.23-1.18.16-1.3-.05-.11-.23-.18-.5-.32z"/></svg>
+    </a>
+    <a id="mailFloat" href="mailto:ventasfreemots@gmail.com" class="bg-purple-500 hover:bg-purple-600 text-white p-4 rounded-full shadow-lg">
+      <span class="sr-only">Email</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M12 13.065l-11.2-7.3A2 2 0 012 4h20a2 2 0 011.2 1.765l-11.2 7.3a2 2 0 01-2 0z"/><path d="M12 15l-12-7.8V20a2 2 0 002 2h20a2 2 0 002-2V7.2L12 15z"/></svg>
+    </a>
+  </div>
+
+  <footer class="bg-purple-700 text-white text-center py-4 mt-12">
+    <div class="flex flex-col items-center gap-2">
+      <div class="w-16 h-16 p-2 rounded-xl bg-purple-100 ring-1 ring-purple-300 overflow-hidden flex items-center justify-center" id="footerLogoBox">
+        <span class="text-xl font-bold text-purple-700" id="footerLogoFallback">FM</span>
+        <img id="footerLogoImg" alt="Free-Mots Logo" class="hidden w-full h-full object-contain" />
+      </div>
+      <p>© <span id="year"></span> Free-Mots. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function readAsDataUrl(file){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>res(fr.result);fr.onerror=()=>rej(fr.error);fr.readAsDataURL(file);});}
+    const logoFile=document.getElementById('logoFile'),logoUrlInput=document.getElementById('logoUrlInput'),logoUrlBtn=document.getElementById('logoUrlBtn'),logoImg=document.getElementById('logoImg'),logoFallback=document.getElementById('logoFallback'),logoPreview=document.getElementById('logoPreview'),logoDropMsg=document.getElementById('logoDropMsg'),logoBox=document.getElementById('logoBox'),logoBgToggle=document.getElementById('logoBgToggle'),footerLogoImg=document.getElementById('footerLogoImg'),footerLogoFallback=document.getElementById('footerLogoFallback'),logoError=document.getElementById('logoError');
+    function setLogo(src){[logoImg, footerLogoImg, logoPreview].forEach(img=>{img.src=src;img.classList.remove('hidden');});[logoFallback, footerLogoFallback, logoDropMsg].forEach(el=>el.classList.add('hidden'));logoError.classList.add('hidden');logoError.textContent='';}
+    logoFile.addEventListener('change', async (e)=>{const f=e.target.files&&e.target.files[0];if(!f)return;if(!f.type.startsWith('image/')){logoError.textContent='El archivo no es una imagen válida.';logoError.classList.remove('hidden');return;}const dataUrl=await readAsDataUrl(f);setLogo(dataUrl);});
+    logoUrlBtn.addEventListener('click', ()=>{const url=(logoUrlInput.value||'').trim();if(!url)return;if(url.startsWith('http')||url.startsWith('data:image')){setLogo(url);}else{logoError.textContent='Pega una URL http(s) o un data URL válido.';logoError.classList.remove('hidden');}});
+    logoBgToggle.addEventListener('change',(e)=>{if(e.target.checked){logoBox.classList.add('bg-purple-100','ring-1','ring-purple-300','p-2');}else{logoBox.classList.remove('bg-purple-100','ring-1','ring-purple-300','p-2');}});
+    const henoFiles=document.getElementById('henoFiles'),henoGrid=document.getElementById('henoGrid'),henoViewGrid=document.getElementById('henoViewGrid');function setSlotImage(parent,src){const img=parent.querySelector('img');const span=parent.querySelector('span');img.src=src;img.classList.remove('hidden');if(span)span.classList.add('hidden');}
+    henoFiles.addEventListener('change', async (e)=>{const files=Array.from(e.target.files||[]).slice(0,4);for(let i=0;i<files.length;i++){const f=files[i];if(!f.type.startsWith('image/'))continue;const dataUrl=await readAsDataUrl(f);setSlotImage(henoGrid.children[i],dataUrl);setSlotImage(henoViewGrid.children[i],dataUrl);}});
+    const servicioFiles=document.getElementById('servicioFiles'),servicioGrid=document.getElementById('servicioGrid');servicioFiles.addEventListener('change', async (e)=>{const files=Array.from(e.target.files||[]).slice(0,2);for(let i=0;i<files.length;i++){const f=files[i];if(!f.type.startsWith('image/'))continue;const dataUrl=await readAsDataUrl(f);setSlotImage(servicioGrid.children[i],dataUrl);}});
+    const waInput=document.getElementById('waInput'),waBtn=document.getElementById('waBtn'),waFloat=document.getElementById('waFloat'),mailInput=document.getElementById('mailInput'),mailBtn=document.getElementById('mailBtn'),mailFloat=document.getElementById('mailFloat');function normalizeDigits(s){return (s||'').replace(/\D/g,'');}function waHref(num){return 'https://wa.me/'+normalizeDigits(num);}waInput.addEventListener('input',()=>{const href=waHref(waInput.value);waBtn.href=href;waFloat.href=href;});mailInput.addEventListener('input',()=>{const href='mailto:'+mailInput.value.trim();mailBtn.href=href;mailFloat.href=href;});
+  </script>
+</body>
+</html>
